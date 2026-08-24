@@ -352,27 +352,28 @@ _(SI si todas las líneas están cubiertas, NO si hay alguna con #####)_
 
 **P11** — ¿Qué diferencia hay entre un test unitario y uno de integración? ¿Cuál de los dos detectó primero el bug de `carrito_total`?
 
-> R:
+> R:La diferencia es que un test unitario lo que hace es revisar una parte de codigo de manera aislada, mientras que el de integración evalua como se comunican e interactuan varias partes de codigo en conjunto. En el caso de carrito_total, el bug fue detectado primero por el test unitario ya que este hacia la prueba en carrito.c.
 
 **P12** — El bug de capacidad en `carrito_agregar` causa un **buffer overflow**: se escribe más allá del array. ¿Por qué esto es peligroso en C pero no ocurriría en un lenguaje como Python o Java?
 
-> R:
+> R: Esto es peligro en C ya que puede corromper memoria y generar vulnerabilidades de segurdad. Por otro lado, en Java y Python no ocurre lo mismo ya que el manejo de memoria es diferente, de modo que al escribir mas datos que los permitidos esto solo genera una excepción de manera controlada. 
 
 **P13** — En este laboratorio encontraste los bugs escribiendo tests. ¿Qué tiene de mejor este enfoque frente a mirar el código directamente?
 
-> R:
+> R:Este enfoque es mejor ya que permite ver errores que a simple vista son dificiles de detectar. Ademas, el realizar test nos permite automatizar la verificación de errores, documentar como responde el programa ante una posible situación real, y notificar cuando se realicen cambios que rompan el programa.
 
 **P14** — El test `test_total_precio_unitario` (cantidad = 1) **pasó** a pesar del bug, mientras que `test_total_con_cantidad` (cantidad = 2) **falló**. ¿Por qué el primer test no detectó el bug?
 
-> R:
+> R:El primero no detectaba el bug ya que al ser una sola unidad el error siempre coincidia con el resultado esperado. Esto se debe a que el bug se encontraba en la funcion carrito_total que no sumaba correctamente la cantidad de productos de un mismo tipo, de modo que al realizar la segunda prueba el error era facilmente detectado.
+
 
 ```
-BUG_EN_FUNCION_1=
+BUG_EN_FUNCION_1=carrito_total
 ```
 _(nombre de la función con el primer bug)_
 
 ```
-BUG_EN_FUNCION_2=
+BUG_EN_FUNCION_2=carrito_agregar
 ```
 _(nombre de la función con el segundo bug)_
 
