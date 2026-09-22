@@ -15,7 +15,7 @@ SRCS := main.c operaciones.c
 OBJS :=$(SRCS: .c=.o)
 
 # Regla principal
-all: $(PROGRAMA)
+all: $(PROGRAMA) 
 
 # Regla para linkear los objetos y generar el ejecutable
 # TODO 3: Completá el comando de linkeo
